@@ -1,0 +1,10 @@
+# create IAM role & attach it to EC2 instance.
+# minimize access -- minimum IAM policies , search for IAM -- roles ---create role
+# this role going to attach to EC2 so select EC2 we need to add privileges like EC2 full access , cloudformation, IAM 
+# however to avoid permission related issues we will use AdministrationAccess (not recommended)
+
+# rolename   --- eksctl-role
+need to add it to our EC2 instance.
+steps:
+EC2- Actions - security- modify IAM - eksctl-role
+now bootstrap server have access to AWS resources , from bootstrap we can able to create cluster
