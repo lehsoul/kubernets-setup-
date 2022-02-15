@@ -1,0 +1,7 @@
+it will helps to setup cluster once cluster setup is done then only we can able to use Kubectl commands to manage our cluster.
+
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+cd /tmp
+ll
+mv eksctl /usr/local/bin
+ekctl version 
