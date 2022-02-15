@@ -1,0 +1,6 @@
+kubectl get nodes
+kubectl run tomcat --image=tomcat
+
+# eksctl is going to create our environment with help of cloudformation , once we execute command ( eksctl create cluster --name hcmx)
+we can able to see Cloudformation template has been creating & executing to setup our EC2 instance
+# /root/.kube/config [ to access kubernetes cluster , who have this file they can able to communicate with cluster to do activities]
