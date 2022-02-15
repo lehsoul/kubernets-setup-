@@ -1,0 +1,10 @@
+Installing or updating the latest version of the AWS CLI
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+
+# we need to validate what is the AWS CLI version 
+#aws --version
+#as per recemondations 2.2.37 
+#EKS can provision IAAC by setting up SMA suite on Master node so that worker nodes can able to get access of services.
