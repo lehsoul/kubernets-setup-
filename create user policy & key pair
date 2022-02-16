@@ -1,0 +1,156 @@
+# SMA provisions the EKS cluster and other infrastructure by using CloudFormation. You need to prepare your user account with the right permissions to launch CloudFormation templates and provision resources on AWS. To do this, create a user policy using the provided json file 
+# and then attach this policy to your user account by following these steps:
+#Log in to the AWS Management Console with your AWS account.
+#Navigate to All services > Security, Identity, & Compliance > IAM. The IAM Management Console opens.
+#Click Policies and follow these steps to create a required policy:
+#Click Create policy and click the JSON tab.
+#Clear the existing codes on the JSON tab and copy the following content into it:
+
+
+example:
+
+
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "1",
+            "Effect": "Allow",
+            "Action": "ec2:*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "2",
+            "Effect": "Allow",
+            "Action": "cloudformation:*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "3",
+            "Effect": "Allow",
+            "Action": "elasticfilesystem:*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "4",
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateInstanceProfile",
+                "iam:DeleteInstanceProfile",
+                "iam:GetRole",
+                "iam:RemoveRoleFromInstanceProfile",
+                "iam:ListRoles",
+                "iam:DeleteRole",
+                "iam:CreateRole",
+                "iam:PassRole",
+                "iam:AttachRolePolicy",
+                "iam:PutRolePolicy",
+                "iam:AddRoleToInstanceProfile",
+                "iam:ListAttachedRolePolicies",
+                "iam:CreatePolicy",
+                "iam:DeletePolicy",
+                "iam:DetachRolePolicy",
+                "iam:DeleteRolePolicy",
+                "iam:ListServerCertificates",
+                "iam:CreateServiceLinkedRole",
+                "acm:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "5",
+            "Effect": "Allow",
+            "Action": [
+                "s3:CreateBucket",
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:DeleteObject"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "6",
+            "Effect": "Allow",
+            "Action": [
+                "sns:ListTopics",
+                "sns:ListSubscriptions"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "7",
+            "Effect": "Allow",
+            "Action": "rds:*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "8",
+            "Effect": "Allow",
+            "Action": "eks:*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "9",
+            "Effect": "Allow",
+            "Action": "elasticloadbalancing:*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "10",
+            "Effect": "Allow",
+            "Action": [
+                "autoscaling:DescribeAutoScalingGroups",
+                "autoscaling:DescribeLaunchConfigurations",
+                "autoscaling:UpdateAutoScalingGroup",
+                "autoscaling:DeleteAutoScalingGroup",
+                "autoscaling:CreateAutoScalingGroup"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "11",
+            "Effect": "Allow",
+            "Action": "route53:*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "12",
+            "Effect": "Allow",
+            "Action": "ecr:*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "13",
+            "Effect": "Allow",
+            "Action": [
+                "aws-marketplace:ViewSubscriptions",
+                "aws-marketplace:Subscribe"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
+
+
+
+
+
+
+#Click Review policy and give a name to this policy. For example, sma-aws-policy.
+#Click Create policy. Wait until a message appears, indicating you have created the policy.
+#Click Users and follow these steps to attach the policy to your user account:
+#Click your own user account from the user list.
+#Click Add permissions > Attach existing policies directly.
+#Select the user policy created in the previous step and click Next: Review.
+#Click Add permissions and wait till a message appears, indicating you have attached the policy.
+#If you don't have the required permissions to attach the user policy, contact your AWS administrators.
+
+
+# Important Once you log in to the AWS Management Console, you can select a region at the upper-right corner. 
+You must place all the created resources in the same region to prevent performance issues, including VPC, EKS cluster, EFS, RDS, and bastion. 
+Some regions don't support the availability of all the required resources. 
+We recommend that you read instructions at Geographical distribution of AWS before you select a region.
+
+
+# https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html?icmpid=docs_iam_console
+
