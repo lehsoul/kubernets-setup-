@@ -1,5 +1,5 @@
 # here how to prepare required resourses for the installation of SMAX 
-docker hub account --- inorder to download our product image 
+docker hub account --- in order to download our product image 
 cloud deployment package from micro focus marketplace [it contains all Cloudformation templates,scripts required for suit installation]
 # SMA provisions EKS Cluster & infrastructure by using cloudformation 
 need to create user account with right permission to launch Cloudformation template , so need to create  AWS user policy [IAM]
